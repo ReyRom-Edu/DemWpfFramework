@@ -31,7 +31,7 @@ namespace DemWpfFramework21
 
             MainFrame.Navigated += MainFrame_Navigated;
 
-            MainFrame.Navigate(new ProductsPage());
+            MainFrame.Navigate(new LoginPage());
         }
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)

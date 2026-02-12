@@ -33,12 +33,28 @@ namespace DemWpfFramework21.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            LoadUser(App.User);
+
             products.Source = Core.Context.Products.ToList();
 
             FilterBox.ItemsSource = Core.Context.Suppliers.Select(x=>x.Name).Prepend("Все поставщики").ToList();
 
             FilterBox.SelectedIndex = 0;
             SortBox.SelectedIndex = 0;
+        }
+
+        private void LoadUser(User user)
+        {
+            NameLabel.Text = user?.FullName ?? "Гость";
+
+            if (user == null || user.Role.Name == "Авторизированный клиент")
+            {
+                FilterPanel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                FilterPanel.Visibility = Visibility.Visible;
+            }
         }
 
         private void FilterChanged(object sender, EventArgs e)
@@ -82,6 +98,8 @@ namespace DemWpfFramework21.Pages
 
         private void ProductListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (App.User == null || App.User.Role.Name == "Авторизированный клиент") return;
+
             App.Frame.Navigate(new ProductDetailPage(productListView.SelectedItem as Product));
         }
     }

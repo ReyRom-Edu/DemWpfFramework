@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemWpfFramework21.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,5 +16,6 @@ namespace DemWpfFramework21
     public partial class App : Application
     {
         public static Frame Frame { get; set; }
+        public static User User { get; set; }
     }
 }

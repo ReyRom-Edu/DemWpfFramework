@@ -27,7 +27,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="0"  HorizontalAlignment="Right" Margin="5">
+            <TextBlock x:Name="NameLabel" Text=""/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" x:Name="FilterPanel">
             <TextBox x:Name="SearchBox" Width="300" TextChanged="FilterChanged"/>
             <ComboBox x:Name="FilterBox" Width="150" SelectionChanged="FilterChanged"/>
             <ComboBox x:Name="SortBox" Width="150" SelectionChanged="FilterChanged">
